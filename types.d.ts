@@ -1,9 +1,6 @@
-type Image = {
-  public_id: string;
-  width: number;
-  height: number;
-  tags: string[];
-};
+import { CldOgImageProps } from "next-cloudinary";
+
+type Image = CldImageProps;
 
 type CloudinarySearchResults = {
   resources: Image[];

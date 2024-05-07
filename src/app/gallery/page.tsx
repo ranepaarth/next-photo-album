@@ -2,6 +2,7 @@ import ImageMasonry from "@/components/image-masonry";
 import UploadButton from "@/components/upload-button";
 import cloudinary from "cloudinary";
 import React from "react";
+import { CloudinarySearchResults } from "../../../types";
 
 const GalleryPage = async () => {
   const results: CloudinarySearchResults = await cloudinary.v2.search

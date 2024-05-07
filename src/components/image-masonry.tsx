@@ -2,6 +2,7 @@
 
 import React from "react";
 import CloudinaryImage from "./cloudinary-image";
+import { Image } from "../../types";
 
 type ImageMasonryProps = {
   resources: Image[];

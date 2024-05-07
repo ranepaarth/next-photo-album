@@ -4,6 +4,7 @@ import { CldImage } from "next-cloudinary";
 import React, { useState } from "react";
 import ImageHeartIcon from "./heart-icon";
 import { ImageDropdownMenu } from "./image-dropdown-menu";
+import { Image } from "../../types";
 
 type CloudinaryImageProps = {
   image: Image;
