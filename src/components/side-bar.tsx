@@ -1,9 +1,14 @@
-import { cn } from "@/lib/utils";
+"use client";
+
 import { Folder, Heart, Image, Menu } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { Button } from "./ui/button";
 
 const SideBar = () => {
+  const pathname = usePathname();
+
   return (
     <div className="pb-12 sm:w-1/3 max-w-[250px]">
       <div className="space-y-4 py-4">
@@ -19,27 +24,33 @@ const SideBar = () => {
             <Menu />
           </Button>
           <div className="space-y-1 flex flex-col">
-            <Button
-              variant="secondary"
-              className="sm:w-full justify-start w-fit text-slate-400"
-            >
-              <Image className="w-4 h-4 sm:mr-2" />
-              <span className="hidden sm:block">Gallery</span>
-            </Button>
-            <Button
-              variant="ghost"
-              className="sm:w-full justify-start w-fit text-slate-400"
-            >
-              <Folder className="w-4 h-4 sm:mr-2" />
-              <span className="hidden sm:block">Albums</span>
-            </Button>
-            <Button
-              variant="ghost"
-              className="sm:w-full justify-start w-fit text-slate-400"
-            >
-              <Heart className="w-4 h-4 sm:mr-2" />
-              <span className="hidden sm:block">Favorites</span>
-            </Button>
+            <Link href={"/gallery"}>
+              <Button
+                variant={pathname === "/gallery" ? "secondary" : "ghost"}
+                className="sm:w-full justify-start w-fit text-slate-400"
+              >
+                <Image className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:block">Gallery</span>
+              </Button>
+            </Link>
+            <Link href={"/albums"}>
+              <Button
+                variant={pathname === "/albums" ? "secondary" : "ghost"}
+                className="sm:w-full justify-start w-fit text-slate-400"
+              >
+                <Folder className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:block">Albums</span>
+              </Button>
+            </Link>
+            <Link href={"/favorites"}>
+              <Button
+                variant={pathname === "/favorites" ? "secondary" : "ghost"}
+                className="sm:w-full justify-start w-fit text-slate-400"
+              >
+                <Heart className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:block">Favorites</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
