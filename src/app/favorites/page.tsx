@@ -1,21 +1,21 @@
 import CloudinaryImage from "@/components/cloudinary-image";
-import UploadButton from "@/components/upload-button";
 import cloudinary from "cloudinary";
 import React from "react";
 
-const GalleryPage = async () => {
+const FavoritesPage = async () => {
   const results: CloudinarySearchResults = await cloudinary.v2.search
-    .expression("resource_type:image AND folder:next-photo-album")
+    .expression(
+      "resource_type:image AND folder:next-photo-album AND tags=favorite"
+    )
     .with_field("tags")
-    .sort_by("created_at", "desc")
-    .max_results(5)
+    .sort_by("last_updated.tags_updated_at", "desc")
+    .max_results(30)
     .execute();
 
   return (
     <section>
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold">Gallery</h1>
-        <UploadButton />
+        <h1 className="text-4xl font-bold">Favorites</h1>
       </div>
 
       <div className="mt-5 columns-1 sm:columns-2 lg:columns-3 xl:columns-4">
@@ -27,4 +27,4 @@ const GalleryPage = async () => {
   );
 };
 
-export default GalleryPage;
+export default FavoritesPage;
