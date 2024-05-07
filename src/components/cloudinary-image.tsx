@@ -2,9 +2,9 @@
 
 import { CldImage } from "next-cloudinary";
 import React, { useState } from "react";
+import { Image } from "../../types";
 import ImageHeartIcon from "./heart-icon";
 import { ImageDropdownMenu } from "./image-dropdown-menu";
-import { Image } from "../../types";
 
 type CloudinaryImageProps = {
   image: Image;
@@ -13,7 +13,7 @@ type CloudinaryImageProps = {
 
 const CloudinaryImage = ({ image, onUnHeart }: CloudinaryImageProps) => {
   const [isFavorite, setIsFavorite] = useState(image.tags.includes("favorite"));
-  console.log(isFavorite);
+  // console.log(isFavorite);
 
   return (
     <article className="w-auto aspect-video first:mt-0 mt-4 relative group rounded-md">
@@ -25,7 +25,7 @@ const CloudinaryImage = ({ image, onUnHeart }: CloudinaryImageProps) => {
           onUnHeart={onUnHeart}
         />
         <div className="group-hover:ease-in-out opacity-0 group-hover:transition-opacity group-hover:duration-300 group-hover:opacity-100">
-          <ImageDropdownMenu />
+          <ImageDropdownMenu image={image} />
         </div>
       </div>
       <div className="bg-gradient-to-b from-black/40 w-full absolute h-10 z-10 top-0"></div>
