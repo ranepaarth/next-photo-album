@@ -1,4 +1,4 @@
-import CloudinaryImage from "@/components/cloudinary-image";
+import ImageMasonry from "@/components/image-masonry";
 import UploadButton from "@/components/upload-button";
 import cloudinary from "cloudinary";
 import React from "react";
@@ -18,11 +18,7 @@ const GalleryPage = async () => {
         <UploadButton />
       </div>
 
-      <div className="mt-5 columns-1 sm:columns-2 lg:columns-3 xl:columns-4">
-        {results.resources.map((image) => (
-          <CloudinaryImage image={image} key={image.public_id} />
-        ))}
-      </div>
+      <ImageMasonry resources={results.resources} />
     </section>
   );
 };
