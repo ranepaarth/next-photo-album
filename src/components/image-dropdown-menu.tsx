@@ -11,8 +11,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Ellipsis, FolderPlus } from "lucide-react";
+import { Image } from "../../types";
+import { AddToAlbumDialog } from "./add-to-album-dialog";
 
-export function ImageDropdownMenu() {
+export function ImageDropdownMenu({ image }: { image: Image }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -24,9 +26,8 @@ export function ImageDropdownMenu() {
         <DropdownMenuLabel>Image</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <FolderPlus className="w-4 h-4 mr-2" />
-            Add to Album
+          <DropdownMenuItem asChild>
+            <AddToAlbumDialog image={image} />
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

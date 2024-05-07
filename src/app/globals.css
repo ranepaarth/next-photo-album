@@ -74,4 +74,13 @@
     scrollbar-gutter: stable both-edges;
     @apply bg-background text-foreground;
   }
+
+  .searchAlbumsContainer::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 4px;
+  }
+  .searchAlbumsContainer::-webkit-scrollbar-thumb {
+    background: rgb(23, 21, 69);
+    border-radius: 5px;
+  }
 }
