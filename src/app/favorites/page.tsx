@@ -1,4 +1,4 @@
-import FavoritesList from "@/components/fovirtes-list";
+import FavoritesList from "@/app/favorites/fovirtes-list";
 import cloudinary from "cloudinary";
 import React from "react";
 
