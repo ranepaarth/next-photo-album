@@ -1,6 +1,8 @@
 import FavoritesList from "@/app/favorites/fovirtes-list";
+import ForceRefresh from "@/components/force-refresh";
 import cloudinary from "cloudinary";
 import React from "react";
+import { CloudinarySearchResults } from "../../../types";
 
 const FavoritesPage = async () => {
   const results: CloudinarySearchResults = await cloudinary.v2.search
@@ -14,6 +16,7 @@ const FavoritesPage = async () => {
 
   return (
     <section>
+      <ForceRefresh />
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold">Favorites</h1>
       </div>
