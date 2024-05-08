@@ -1,5 +1,6 @@
 "use client";
 
+import { addToAlbumAction } from "@/actions/add-to-album";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,11 +11,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Ellipsis, FolderPlus } from "lucide-react";
+import { Ellipsis, ImageMinus } from "lucide-react";
 import { Image } from "../../types";
 import { AddToAlbumDialog } from "./add-to-album-dialog";
 
 export function ImageDropdownMenu({ image }: { image: Image }) {
+  const handleRemoveImage = async () => {
+    await addToAlbumAction("root", image);
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -26,8 +30,20 @@ export function ImageDropdownMenu({ image }: { image: Image }) {
         <DropdownMenuLabel>Image</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <AddToAlbumDialog image={image} />
+          <div className="hover:bg-secondary w-full rounded-sm">
+            <DropdownMenuItem asChild>
+              <AddToAlbumDialog image={image} />
+            </DropdownMenuItem>
+          </div>
+          <DropdownMenuItem>
+            <Button
+              variant={"ghost"}
+              className="h-0 py-3 w-full flex justify-start px-2"
+              onClick={handleRemoveImage}
+            >
+              <ImageMinus className="h-4 w-4 mr-2" />
+              Remove
+            </Button>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

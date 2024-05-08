@@ -17,15 +17,26 @@ export async function addToAlbumAction(folderName: string, image: Image) {
   // Which is something we have to avoid
   // Thus the below extra step
 
-
   // The below approach is also not right. What if the image is nested to "n" levels
 
-  //TODO: But since we just need the last index value we can retrieve it. BUT HOW??
-  const publicIdString = image.public_id.split("/")[1];
+  const publicIdArray = image.public_id.split("/");
+  const id = publicIdArray[publicIdArray.length - 1];
+
+  if (folderName === "root" || folderName === "next-photo-album") {
+    await cloudinary.v2.uploader.rename(
+      image.public_id,
+      `next-photo-album/${id}`,
+      {
+        resource_type: "image",
+      }
+    );
+
+    return;
+  }
 
   await cloudinary.v2.uploader.rename(
     image.public_id,
-    `next-photo-album/${folderName}/${publicIdString}`,
+    `next-photo-album/${folderName}/${id}`,
     {
       resource_type: "image",
     }
