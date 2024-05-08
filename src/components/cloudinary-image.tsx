@@ -35,6 +35,7 @@ const CloudinaryImage = ({ image, onUnHeart }: CloudinaryImageProps) => {
         src={image.public_id}
         width={image.width}
         height={image.height}
+        quality={20}
         className="w-full rounded-md brightness-90 overflow-hidden"
       />
     </article>
