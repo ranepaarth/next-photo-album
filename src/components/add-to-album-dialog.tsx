@@ -15,27 +15,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Folder, FolderPlus } from "lucide-react";
 import { ChangeEvent, useEffect, useState, useTransition } from "react";
-import { Image } from "../../types";
+import { FetchAlbumsResultTypes, FolderType, Image } from "../../types";
 
 type AddToAlbumProps = {
   image: Image;
 };
 
-type Folder = {
-  name: string;
-  path: string;
-};
 
-type FetchAlbumsTypes = {
-  folders: Folder[];
-};
 
 export function AddToAlbumDialog({ image }: AddToAlbumProps) {
   const [albumName, setAlbumName] = useState("New album");
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
-  const [albums, setAlbums] = useState<Folder[]>();
-  const [searchAlbums, setSearchAlbums] = useState<Folder[]>();
+  const [albums, setAlbums] = useState<FolderType[]>();
+  const [searchAlbums, setSearchAlbums] = useState<FolderType[]>();
 
   const handleClick = async () => {
     setOpen(false);
@@ -44,7 +37,7 @@ export function AddToAlbumDialog({ image }: AddToAlbumProps) {
 
   useEffect(() => {
     startTransition(async () => {
-      const result: FetchAlbumsTypes = await fetchAlbums();
+      const result: FetchAlbumsResultTypes = await fetchAlbums();
       if (!result.folders) return;
       setAlbums(result.folders);
     });
