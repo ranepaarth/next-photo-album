@@ -14,13 +14,15 @@ import {
 import { Ellipsis, ImageMinus } from "lucide-react";
 import { Image } from "../../types";
 import { AddToAlbumDialog } from "./add-to-album-dialog";
+import { useState } from "react";
 
 export function ImageDropdownMenu({ image }: { image: Image }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const handleRemoveImage = async () => {
     await addToAlbumAction("root", image);
   };
   return (
-    <DropdownMenu>
+    <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="imageMenuBtn" className="p-0 focus-visible:ring-0">
           <Ellipsis className="w-5 h-5" />
@@ -32,7 +34,7 @@ export function ImageDropdownMenu({ image }: { image: Image }) {
         <DropdownMenuGroup>
           <div className="hover:bg-secondary w-full rounded-sm">
             <DropdownMenuItem asChild>
-              <AddToAlbumDialog image={image} />
+              <AddToAlbumDialog image={image} onClose={()=>setDropdownOpen(false)}/>
             </DropdownMenuItem>
           </div>
           <DropdownMenuItem>

@@ -19,11 +19,10 @@ import { FetchAlbumsResultTypes, FolderType, Image } from "../../types";
 
 type AddToAlbumProps = {
   image: Image;
+  onClose: () => void;
 };
 
-
-
-export function AddToAlbumDialog({ image }: AddToAlbumProps) {
+export function AddToAlbumDialog({ image, onClose }: AddToAlbumProps) {
   const [albumName, setAlbumName] = useState("New album");
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
@@ -32,6 +31,7 @@ export function AddToAlbumDialog({ image }: AddToAlbumProps) {
 
   const handleClick = async () => {
     setOpen(false);
+    onClose();
     await addToAlbumAction(albumName, image);
   };
 
@@ -59,7 +59,15 @@ export function AddToAlbumDialog({ image }: AddToAlbumProps) {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(isDialogOpen) => {
+        setOpen(isDialogOpen);
+        if (!isDialogOpen) {
+          onClose();
+        }
+      }}
+    >
       <DialogTrigger asChild>
         <Button variant="imageMenuBtn">
           <FolderPlus className="w-4 h-4 mr-2" />
