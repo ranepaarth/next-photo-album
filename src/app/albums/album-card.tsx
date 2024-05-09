@@ -19,10 +19,10 @@ const AlbumCard = ({ album }: AlbumCardProps) => {
     <Card>
       <CardHeader>
         <CardTitle className=" capitalize font-bold flex space-x-2 items-start">
-          <span className="text-xl">📁</span>{" "}
-          <span className="text-2xl">{album.name}</span>
+          <span className="md:text-xl text-base">📁</span>{" "}
+          <span className="md:text-2xl text-lg">{album.name}</span>
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-xs md:text-sm">
           This contains images stored in your{" "}
           <span className="font-semibold text-accent-foreground">
             {album.name}

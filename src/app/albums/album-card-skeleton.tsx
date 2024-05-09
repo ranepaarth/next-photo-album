@@ -9,14 +9,14 @@ const AlbumCardSkeleton = () => {
     <Card>
       <CardHeader>
         <div className="flex flex-col items-start w-full gap-y-2">
-          <Skeleton className="h-8 w-32" />
-          <Skeleton className="h-5 w-full" />
-          <Skeleton className="h-5 w-20" />
+          <Skeleton className="h-6 md:h-8 w-32" />
+          <Skeleton className="h-3 md:h-5 w-full" />
+          <Skeleton className="h-3 md:h-5 w-20" />
         </div>
       </CardHeader>
 
       <CardFooter>
-        <Skeleton className="h-6 w-28" />
+        <Skeleton className="h-6 w-20 md:w-28" />
       </CardFooter>
     </Card>
   );

@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import CloudinaryImage from "./cloudinary-image";
 import { Image } from "../../types";
+import CloudinaryImage from "./cloudinary-image";
 
 type ImageMasonryProps = {
   resources: Image[];
@@ -11,7 +11,7 @@ type ImageMasonryProps = {
 
 const ImageMasonry = ({ resources, onUnHeart }: ImageMasonryProps) => {
   return (
-    <div className="mt-5 columns-1 sm:columns-2 lg:columns-3 xl:columns-4">
+    <div className="mt-5 columns-2 lg:columns-3 xl:columns-4">
       {resources.map((image) => (
         <CloudinaryImage
           image={image}
