@@ -4,15 +4,38 @@ import UploadButton from "@/components/upload-button";
 import cloudinary from "cloudinary";
 import React from "react";
 import { CloudinarySearchResults } from "../../../types";
+import SearchImages from "./search-images";
 
-const GalleryPage = async () => {
+type GalleryProps = {
+  searchParams: {
+    tag: string;
+  };
+};
+
+const GalleryPage = async ({ searchParams }: GalleryProps) => {
+  const tagsExpression = searchParams.tag ? `AND tags=${searchParams.tag}` : "";
   const results: CloudinarySearchResults = await cloudinary.v2.search
-    .expression("resource_type:image AND folder:next-photo-album")
+    .expression(
+      `resource_type:image AND folder:next-photo-album ${tagsExpression}`
+    )
     .with_field("tags")
     .sort_by("created_at", "desc")
     .max_results(30)
     .execute();
 
+  let content;
+
+  if (results.resources.length === 0) {
+    content = <p>No images yet</p>;
+  }
+
+  if (results.resources.length === 0 && searchParams.tag) {
+    content = <p>No images with {searchParams.tag} tag.</p>;
+  }
+
+  if (results.resources.length > 0) {
+    content = <ImageMasonry resources={results.resources} />;
+  }
   return (
     <section>
       <ForceRefresh />
@@ -21,7 +44,9 @@ const GalleryPage = async () => {
         <UploadButton />
       </div>
 
-      <ImageMasonry resources={results.resources} />
+      <SearchImages searchTag={searchParams.tag} />
+
+      {content}
     </section>
   );
 };
