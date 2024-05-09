@@ -3,9 +3,8 @@
 import { getAssetImage } from "@/actions/get-asset-image";
 import ForceRefresh from "@/components/force-refresh";
 import { Button } from "@/components/ui/button";
-import { Eraser, Scissors } from "lucide-react";
-import { CldImage, CldImageProps, CldOgImageProps } from "next-cloudinary";
-import Link from "next/link";
+import { Eraser, Info, Loader2, Scissors } from "lucide-react";
+import { CldImage } from "next-cloudinary";
 import React, { useEffect, useState, useTransition } from "react";
 import { CloudinarySearchResults, Image } from "../../../types";
 
@@ -15,17 +14,18 @@ type EditPageProps = {
   };
 };
 
+type Transformation =
+  | undefined
+  | "generative-fill"
+  | "blur"
+  | "remove-background"
+  | "gray-scale"
+  | "crop";
+
 const EditPage = ({ searchParams }: EditPageProps) => {
   const [image, setImage] = useState<Image>();
   const [isPending, startTransition] = useTransition();
-  const [transformation, setTransformation] = useState<
-    | undefined
-    | "generative-fill"
-    | "blur"
-    | "remove-background"
-    | "gray-scale"
-    | "crop"
-  >();
+  const [transformation, setTransformation] = useState<Transformation>();
 
   useEffect(() => {
     const publicId = decodeURIComponent(searchParams.publicId);
@@ -36,18 +36,19 @@ const EditPage = ({ searchParams }: EditPageProps) => {
     });
   }, [searchParams.publicId]);
 
-  console.log(image);
   return (
     <section>
       <ForceRefresh />
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-2">
         <h1 className="text-4xl font-bold">Edit Image</h1>
-        <Link href={"#"}>
-          <Button asChild>Download Image</Button>
-        </Link>
       </div>
 
-      <div className="flex items-center space-4 flex-wrap gap-4">
+      <div className="flex items-center px-4 py-2 rounded-md border bg-slate-900 w-fit mb-8 text-muted-foreground text-xs">
+        <Info className="mr-2 w-4 h-4" />
+        The behavior of below transformations depends on the image you choose
+      </div>
+
+      <div className="flex items-center space-4 flex-wrap gap-4 ">
         <Button
           variant={"secondary"}
           onClick={() => setTransformation("generative-fill")}
@@ -74,7 +75,7 @@ const EditPage = ({ searchParams }: EditPageProps) => {
         </Button>
         <Button
           variant={"secondary"}
-          onClick={() => setTransformation(undefined)}
+          onClick={() => setTransformation("crop")}
           className="group flex items-center gap-1 w-32"
         >
           <Scissors className="w-4 h-4" />
@@ -84,42 +85,60 @@ const EditPage = ({ searchParams }: EditPageProps) => {
         <Button
           variant={"destructive"}
           onClick={() => setTransformation(undefined)}
+          className="group"
         >
-          <Eraser className="w-4 h-4 mr-2" />
-          Clear all
+          <div className="w-full flex items-center group-hover:opacity-0 group-hover:transition-opacity group-hover:duration-150 group-hover:ease-linear">
+            <Eraser className="w-4 h-4 mr-2" />
+            <span>Clear</span>
+          </div>
         </Button>
       </div>
 
       <hr className="my-4" />
-      <div className="flex items-center space-x-2 justify-center w-full">
-        <div className="flex-1 w-1/2 aspect-auto max-w-[300px] flex flex-col items-center space-y-2">
-          <span className="text-lg font-semibold">🖼️ Original Image</span>
-          {image && (
-            <CldImage
-              src={searchParams.publicId}
-              alt="image"
-              width={300}
-              height={200}
-            />
-          )}
+
+      {isPending && !image ? (
+        <div className="w-full text-center flex justify-center mt-20">
+          <Loader2 className="animate-spin h-8 w-8" strokeWidth={2.5} />
         </div>
-        <div className="flex-1 w-1/2 aspect-auto max-w-[300px] flex flex-col items-center space-y-2">
-          <span className="text-lg font-semibold">🎇 Transformed Image</span>
-          {image && (
-            <CldImage
-              src={searchParams.publicId}
-              alt="image"
-              width={300}
-              height={200}
-              fillBackground={transformation === "generative-fill"}
-              blur={transformation === "blur" ? "800" : ""}
-              removeBackground={transformation === "remove-background"}
-              grayscale={transformation === "gray-scale"}
-              crop={transformation === "crop" ? "crop" : undefined}
-            />
-          )}
+      ) : (
+        <div className="flex items-center space-x-2 justify-center w-full">
+          <div className="flex-1 w-1/2 aspect-auto max-w-[300px] flex flex-col items-center space-y-2">
+            {image && (
+              <>
+                <span className="sm:text-lg font-semibold">
+                  🖼️ Original Image
+                </span>
+                <CldImage
+                  src={searchParams.publicId}
+                  alt="image"
+                  width={280}
+                  height={180}
+                />
+              </>
+            )}
+          </div>
+          <div className="flex-1 w-1/2 aspect-auto max-w-[300px] flex flex-col items-center space-y-2">
+            {image && (
+              <>
+                <span className="sm:text-lg font-semibold">
+                  🎇 Transformed Image
+                </span>
+                <CldImage
+                  src={searchParams.publicId}
+                  alt="image"
+                  width={280}
+                  height={180}
+                  fillBackground={transformation === "generative-fill"}
+                  blur={transformation === "blur" ? "800" : ""}
+                  removeBackground={transformation === "remove-background"}
+                  grayscale={transformation === "gray-scale"}
+                  crop={transformation === "crop" ? "crop" : undefined}
+                />
+              </>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
