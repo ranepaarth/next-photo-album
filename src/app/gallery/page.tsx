@@ -2,6 +2,7 @@ import ForceRefresh from "@/components/force-refresh";
 import ImageMasonry from "@/components/image-masonry";
 import UploadButton from "@/components/upload-button";
 import cloudinary from "cloudinary";
+import Link from "next/link";
 import React from "react";
 import { CloudinarySearchResults } from "../../../types";
 import SearchImages from "./search-images";
@@ -40,7 +41,9 @@ const GalleryPage = async ({ searchParams }: GalleryProps) => {
     <section>
       <ForceRefresh />
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold">Gallery</h1>
+        <Link href={"/gallery"}>
+          <h1 className="text-4xl font-bold">Gallery</h1>
+        </Link>
         <UploadButton />
       </div>
 
