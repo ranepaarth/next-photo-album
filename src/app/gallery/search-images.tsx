@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useEffect, useState } from "react";
 
@@ -28,7 +28,8 @@ const SearchImages = ({ searchTag }: SearchImagesProps) => {
       className="w-full max-w-[550px] flex items-center space-x-2 my-5"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <div className="w-full flex items-center border rounded-md px-2">
+      <div className="w-full flex justify-between items-center border rounded-md px-4">
+        {/* <div className="px-4 w-full flex items-center"> */}
         <Search className="w-4 h-4 text-muted-foreground" />
         <Input
           value={tagName}
@@ -36,6 +37,14 @@ const SearchImages = ({ searchTag }: SearchImagesProps) => {
           placeholder="Search by tag"
           className="outline-none focus-visible:ring-0 border-none"
         />
+        {/* </div> */}
+        <Button
+          variant={"ghost"}
+          className="hover:bg-transparent p-0"
+          onClick={() => setTagName("")}
+        >
+          <X className="w-4 h-4 text-muted-foreground hover:text-accent-foreground" />
+        </Button>
       </div>
       <Button size={"sm"} disabled={!tagName}>
         <Search className="w-4 h-4" />
