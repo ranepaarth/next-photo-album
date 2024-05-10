@@ -1,6 +1,6 @@
 "use client";
 
-import { Folder, Heart, Image, Menu } from "lucide-react";
+import { Folder, Heart, ImageIcon, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -29,7 +29,7 @@ const SideBar = () => {
                 variant={pathname === "/gallery" ? "secondary" : "ghost"}
                 className="sm:w-full justify-start w-fit text-slate-400"
               >
-                <Image className="w-4 h-4 sm:mr-2" />
+                <ImageIcon className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:block">Gallery</span>
               </Button>
             </Link>
