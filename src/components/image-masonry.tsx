@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { Image } from "../../types";
+import { ImageType } from "../../types";
 import CloudinaryImage from "./cloudinary-image";
 
 type ImageMasonryProps = {
-  resources: Image[];
-  onUnHeart?: (image: Image) => void;
+  resources: ImageType[];
+  onUnHeart?: (image: ImageType) => void;
 };
 
 const ImageMasonry = ({ resources, onUnHeart }: ImageMasonryProps) => {

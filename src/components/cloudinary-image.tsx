@@ -2,13 +2,13 @@
 
 import { CldImage } from "next-cloudinary";
 import React, { useState } from "react";
-import { Image } from "../../types";
+import { ImageType } from "../../types";
 import ImageHeartIcon from "./heart-icon";
 import { ImageDropdownMenu } from "./image-dropdown-menu";
 
 type CloudinaryImageProps = {
-  image: Image;
-  onUnHeart?: (image: Image) => void;
+  image: ImageType;
+  onUnHeart?: (image: ImageType) => void;
 };
 
 const CloudinaryImage = ({ image, onUnHeart }: CloudinaryImageProps) => {

@@ -16,11 +16,11 @@ import { Ellipsis, ImageMinus, Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Image } from "../../types";
+import { ImageType } from "../../types";
 import { AddToAlbumDialog } from "./add-to-album-dialog";
 import ForceRefresh from "./force-refresh";
 
-export function ImageDropdownMenu({ image }: { image: Image }) {
+export function ImageDropdownMenu({ image }: { image: ImageType }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();

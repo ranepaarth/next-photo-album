@@ -13,11 +13,11 @@ import {
 } from "@/components/ui/dialog";
 import { FolderPlus, Loader2 } from "lucide-react";
 import { useEffect, useState, useTransition } from "react";
-import { FetchAlbumsResultTypes, FolderType, Image } from "../../types";
+import { FetchAlbumsResultTypes, FolderType, ImageType } from "../../types";
 import SearchAlbums from "./search-albums";
 
 type AddToAlbumProps = {
-  image: Image;
+  image: ImageType;
   onClose: () => void;
 };
 

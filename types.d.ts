@@ -1,9 +1,9 @@
 import { CldOgImageProps } from "next-cloudinary";
 
-type Image = CldImageProps;
+type ImageType = CldImageProps;
 
 type CloudinarySearchResults = {
-  resources: Image[];
+  resources: ImageType[];
 };
 
 type FolderType = {

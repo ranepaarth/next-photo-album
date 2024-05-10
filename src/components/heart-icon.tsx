@@ -3,12 +3,13 @@
 import { setAsFavoriteAction } from "@/actions/set-as-favorite";
 import { HeartIcon } from "lucide-react";
 import React, { useTransition } from "react";
+import { ImageType } from "../../types";
 
 type HeartIconProps = {
-  image: Image;
+  image: ImageType;
   setIsFavorite: React.Dispatch<React.SetStateAction<boolean>>;
   isFavorite: boolean;
-  onUnHeart?: (image: Image) => void;
+  onUnHeart?: (image: ImageType) => void;
 };
 
 const ImageHeartIcon = ({

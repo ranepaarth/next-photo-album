@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Eraser, Info, Loader2, Scissors } from "lucide-react";
 import { CldImage } from "next-cloudinary";
 import React, { useEffect, useState, useTransition } from "react";
-import { CloudinarySearchResults, Image } from "../../../types";
+import { CloudinarySearchResults, ImageType } from "../../../types";
 
 type EditPageProps = {
   searchParams: {
@@ -23,7 +23,7 @@ type Transformation =
   | "crop";
 
 const EditPage = ({ searchParams }: EditPageProps) => {
-  const [image, setImage] = useState<Image>();
+  const [image, setImage] = useState<ImageType>();
   const [isPending, startTransition] = useTransition();
   const [transformation, setTransformation] = useState<Transformation>();
 

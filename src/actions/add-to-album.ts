@@ -1,13 +1,13 @@
 "use server";
 
 import cloudinary from "cloudinary";
-import { Image } from "../../types";
+import { ImageType } from "../../types";
 
 export async function fetchAlbums() {
   return await cloudinary.v2.api.sub_folders("next-photo-album");
 }
 
-export async function addToAlbumAction(folderName: string, image: Image) {
+export async function addToAlbumAction(folderName: string, image: ImageType) {
   // extract the string except for the folder name and '/'
 
   //   Since our public_id is 'next-photo-album/askmas8a74ss4a' therefore if we add an image with that public_id into a folder say 'random' then the path of that image will be
