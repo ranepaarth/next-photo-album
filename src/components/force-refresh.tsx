@@ -9,7 +9,7 @@ const ForceRefresh = () => {
 
   useEffect(() => {
     router.refresh();
-  }, []);
+  }, [router]);
 
   return <></>;
 };
