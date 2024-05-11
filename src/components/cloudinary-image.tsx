@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { CldImage } from "next-cloudinary";
 import React, { useState } from "react";
 import { ImageType } from "../../types";
@@ -9,14 +10,28 @@ import { ImageDropdownMenu } from "./image-dropdown-menu";
 type CloudinaryImageProps = {
   image: ImageType;
   onUnHeart?: (image: ImageType) => void;
+  index?: number;
 };
 
-const CloudinaryImage = ({ image, onUnHeart }: CloudinaryImageProps) => {
+const CloudinaryImage = ({ image, onUnHeart, index }: CloudinaryImageProps) => {
   const [isFavorite, setIsFavorite] = useState(image.tags.includes("favorite"));
-  // console.log(isFavorite);
 
   return (
-    <article className="w-auto aspect-video first:mt-0 mt-4 relative group rounded-md">
+    <motion.article
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      initial="hidden"
+      animate="visible"
+      transition={{
+        delay: (index as number) * 0.25,
+        ease: "easeInOut",
+        duration: 0.5,
+      }}
+      viewport={{ amount: 0 }}
+      className="w-auto aspect-video first:mt-0 mt-4 relative group rounded-md"
+    >
       <div className="absolute top-1 flex justify-between items-center z-20 w-full px-4">
         <ImageHeartIcon
           image={image}
@@ -38,7 +53,7 @@ const CloudinaryImage = ({ image, onUnHeart }: CloudinaryImageProps) => {
         quality={20}
         className="w-full rounded-md brightness-90 overflow-hidden"
       />
-    </article>
+    </motion.article>
   );
 };
 
