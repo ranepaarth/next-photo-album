@@ -42,11 +42,12 @@ const SearchImages = ({ searchTag }: SearchImagesProps) => {
           variant={"ghost"}
           className="hover:bg-transparent p-0"
           onClick={() => setTagName("")}
+          type="button"
         >
           <X className="w-4 h-4 text-muted-foreground hover:text-accent-foreground" />
         </Button>
       </div>
-      <Button size={"sm"} disabled={!tagName}>
+      <Button size={"sm"} disabled={!tagName} type="submit">
         <Search className="w-4 h-4" />
       </Button>
     </form>
