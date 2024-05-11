@@ -37,6 +37,7 @@ const GalleryPage = async ({ searchParams }: GalleryProps) => {
   if (results.resources.length > 0) {
     content = <ImageMasonry resources={results.resources} />;
   }
+
   return (
     <section>
       <ForceRefresh />
@@ -44,7 +45,7 @@ const GalleryPage = async ({ searchParams }: GalleryProps) => {
         <Link href={"/gallery"}>
           <h1 className="text-4xl font-bold">Gallery</h1>
         </Link>
-        <UploadButton />
+        <UploadButton totalImages={results.resources.length}/>
       </div>
 
       <SearchImages searchTag={searchParams.tag} />
