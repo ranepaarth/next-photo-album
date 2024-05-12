@@ -18,13 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
-        <Navbar />
-        <main className="flex">
-          <SideBar />
-          <div className="w-full p-4">{children}</div>
-        </main>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
