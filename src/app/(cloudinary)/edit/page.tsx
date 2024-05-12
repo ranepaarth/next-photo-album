@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Eraser, Info, Loader2, Scissors } from "lucide-react";
 import { CldImage } from "next-cloudinary";
 import React, { useEffect, useState, useTransition } from "react";
-import { CloudinarySearchResults, ImageType } from "../../../types";
+import { CloudinarySearchResults, ImageType } from "../../../../types";
 
 type EditPageProps = {
   searchParams: {
@@ -43,7 +43,7 @@ const EditPage = ({ searchParams }: EditPageProps) => {
         <h1 className="text-4xl font-bold">Edit Image</h1>
       </div>
 
-      <div className="flex items-center px-4 py-2 rounded-md border bg-slate-900 w-fit mb-8 text-muted-foreground text-xs">
+      <div className="flex items-center px-4 py-2 rounded-md border bg-neutral-900 w-fit mb-8 text-muted-foreground text-xs">
         <Info className="mr-2 w-4 h-4" />
         The behavior of below transformations depends on the image you choose
       </div>
@@ -69,7 +69,7 @@ const EditPage = ({ searchParams }: EditPageProps) => {
         <Button
           variant={"secondary"}
           onClick={() => setTransformation("gray-scale")}
-          className="hover:grayscale"
+          className="hover:grayscale bg-blue-500"
         >
           <span>Image grayscale</span>
         </Button>

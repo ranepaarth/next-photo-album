@@ -1,9 +1,9 @@
+import ForceRefresh from "@/components/force-refresh";
 import ImageMasonry from "@/components/image-masonry";
 import cloudinary from "cloudinary";
 import { ImagePlus } from "lucide-react";
 import React from "react";
-import { CloudinarySearchResults } from "../../../../types";
-import ForceRefresh from "@/components/force-refresh";
+import { CloudinarySearchResults } from "../../../../../types";
 
 type SingleAlbumPageProps = {
   params: {
@@ -26,7 +26,7 @@ const SingleAlbumPage = async ({ params }: SingleAlbumPageProps) => {
   let content;
   if (results.resources.length === 0) {
     content = (
-      <div className="text-slate-500 flex items-end gap-2">
+      <div className="text-neutral-500 flex items-end gap-2">
         <span>
           <ImagePlus className="w-8 h-8" />
         </span>

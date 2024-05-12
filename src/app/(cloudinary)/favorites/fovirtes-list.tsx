@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import ImageMasonry from "../../components/image-masonry";
-import { ImageType } from "../../../types";
+import { ImageType } from "../../../../types";
+import ImageMasonry from "../../../components/image-masonry";
 
-const FavoritesList = ({ initialResources }: { initialResources: ImageType[] }) => {
+const FavoritesList = ({
+  initialResources,
+}: {
+  initialResources: ImageType[];
+}) => {
   const [resources, setResources] = useState(initialResources);
 
   useEffect(() => {

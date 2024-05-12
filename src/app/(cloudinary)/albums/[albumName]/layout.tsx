@@ -18,7 +18,7 @@ const SingleAlbumPageLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <section>
-      <div className="mb-5 text-slate-400">
+      <div className="mb-5 text-neutral-400">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem className="hover:text-accent-foreground hover:underline cursor-pointer">

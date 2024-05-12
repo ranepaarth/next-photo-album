@@ -4,7 +4,7 @@ import UploadButton from "@/components/upload-button";
 import cloudinary from "cloudinary";
 import Link from "next/link";
 import React from "react";
-import { CloudinarySearchResults } from "../../../types";
+import { CloudinarySearchResults } from "../../../../types";
 import SearchImages from "./search-images";
 
 type GalleryProps = {
@@ -45,7 +45,7 @@ const GalleryPage = async ({ searchParams }: GalleryProps) => {
         <Link href={"/gallery"}>
           <h1 className="text-4xl font-bold">Gallery</h1>
         </Link>
-        <UploadButton totalImages={results.resources.length}/>
+        <UploadButton totalImages={results.resources.length} />
       </div>
 
       <SearchImages searchTag={searchParams.tag} />

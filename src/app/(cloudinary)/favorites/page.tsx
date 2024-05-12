@@ -1,8 +1,8 @@
-import FavoritesList from "@/app/favorites/fovirtes-list";
+import FavoritesList from "@/app/(cloudinary)/favorites/fovirtes-list";
 import ForceRefresh from "@/components/force-refresh";
 import cloudinary from "cloudinary";
 import React from "react";
-import { CloudinarySearchResults } from "../../../types";
+import { CloudinarySearchResults } from "../../../../types";
 
 const FavoritesPage = async () => {
   const results: CloudinarySearchResults = await cloudinary.v2.search

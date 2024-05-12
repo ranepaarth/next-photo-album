@@ -2,7 +2,7 @@
 
 import { fetchAlbums } from "@/actions/add-to-album";
 import React, { ChangeEvent, useEffect, useState, useTransition } from "react";
-import { FetchAlbumsResultTypes, FolderType } from "../../../types";
+import { FetchAlbumsResultTypes, FolderType } from "../../../../types";
 import AlbumCard from "./album-card";
 import AlbumPageSkeleton from "./album-page-skeleton";
 import AlbumSearchFilter from "./album-search-filter";

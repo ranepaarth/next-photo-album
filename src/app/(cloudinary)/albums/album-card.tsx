@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import React from "react";
-import { FolderType } from "../../../types";
+import { FolderType } from "../../../../types";
 
 type AlbumCardProps = {
   album: FolderType;
