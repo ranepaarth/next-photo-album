@@ -15,7 +15,7 @@ const SearchImages = ({ searchTag }: SearchImagesProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    setTagName(searchTag);
+    setTagName(searchTag ?? "");
   }, [searchTag]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -29,7 +29,6 @@ const SearchImages = ({ searchTag }: SearchImagesProps) => {
       onSubmit={(e) => handleSubmit(e)}
     >
       <div className="w-full flex justify-between items-center border rounded-md px-4">
-        {/* <div className="px-4 w-full flex items-center"> */}
         <Search className="w-4 h-4 text-muted-foreground" />
         <Input
           value={tagName}
@@ -37,7 +36,6 @@ const SearchImages = ({ searchTag }: SearchImagesProps) => {
           placeholder="Search by tag"
           className="outline-none focus-visible:ring-0 border-none"
         />
-        {/* </div> */}
         <Button
           variant={"ghost"}
           className="hover:bg-transparent p-0"
@@ -47,7 +45,7 @@ const SearchImages = ({ searchTag }: SearchImagesProps) => {
           <X className="w-4 h-4 text-muted-foreground hover:text-accent-foreground" />
         </Button>
       </div>
-      <Button size={"sm"} disabled={!tagName} type="submit">
+      <Button disabled={!tagName} type="submit">
         <Search className="w-4 h-4" />
       </Button>
     </form>
