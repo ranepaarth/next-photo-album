@@ -43,10 +43,10 @@ const SearchAlbums = ({
         placeholder="album name"
       />
       {searchAlbums && searchAlbums?.length > 0 && (
-        <div className="absolute bg-slate-950 border rounded-md top-12 w-60 flex flex-col space-y-1 p-2 max-h-[250px] overflow-auto searchAlbums">
+        <div className="absolute bg-neutral-950 border rounded-md top-12 w-60 flex flex-col space-y-1 p-2 max-h-[250px] overflow-auto searchAlbums">
           {searchAlbums?.map((folder) => (
             <p
-              className="p-2 rounded-sm hover:bg-slate-600 cursor-pointer flex items-center"
+              className="p-2 rounded-sm hover:bg-neutral-600 cursor-pointer flex items-center"
               onClick={() => {
                 setAlbumName(folder.name);
                 setSearchAlbums([]);

@@ -19,7 +19,7 @@ const SideBar = () => {
           <Button
             size={"sm"}
             variant={"ghost"}
-            className="sm:hidden hover:bg-white hover:text-slate-900"
+            className="sm:hidden hover:bg-white hover:text-neutral-900"
           >
             <Menu />
           </Button>
@@ -27,7 +27,7 @@ const SideBar = () => {
             <Link href={"/gallery"}>
               <Button
                 variant={pathname === "/gallery" ? "secondary" : "ghost"}
-                className="sm:w-full justify-start w-fit text-slate-400"
+                className="sm:w-full justify-start w-fit text-neutral-400"
               >
                 <ImageIcon className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:block">Gallery</span>
@@ -37,7 +37,7 @@ const SideBar = () => {
             <Link href={"/albums"}>
               <Button
                 variant={pathname === "/albums" ? "secondary" : "ghost"}
-                className="sm:w-full justify-start w-fit text-slate-400"
+                className="sm:w-full justify-start w-fit text-neutral-400"
               >
                 <Folder className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:block">Albums</span>
@@ -47,7 +47,7 @@ const SideBar = () => {
             <Link href={"/favorites"}>
               <Button
                 variant={pathname === "/favorites" ? "secondary" : "ghost"}
-                className="sm:w-full justify-start w-fit text-slate-400"
+                className="sm:w-full justify-start w-fit text-neutral-400"
               >
                 <Heart className="w-4 h-4 sm:mr-2" />
                 <span className="hidden sm:block">Favorites</span>
