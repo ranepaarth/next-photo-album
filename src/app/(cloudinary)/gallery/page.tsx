@@ -17,7 +17,7 @@ const GalleryPage = async ({ searchParams }: GalleryProps) => {
   const tagsExpression = searchParams.tag ? `AND tags=${searchParams.tag}` : "";
   const results: CloudinarySearchResults = await cloudinary.v2.search
     .expression(
-      `resource_type:image AND folder:next-photo-album ${tagsExpression}`
+      `cloud_name:${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME} AND resource_type:image AND folder:next-photo-album ${tagsExpression}`
     )
     .with_field("tags")
     .sort_by("created_at", "desc")
