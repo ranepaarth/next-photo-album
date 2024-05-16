@@ -14,7 +14,7 @@ type SingleAlbumPageProps = {
 const SingleAlbumPage = async ({ params }: SingleAlbumPageProps) => {
   const results: CloudinarySearchResults = await cloudinary.v2.search
     .expression(
-      `cloud_name:${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}  resource_type:image AND folder:next-photo-album/${params.albumName}`
+      `cloud_name:${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME} AND resource_type:image AND folder:next-photo-album/${params.albumName}`
     )
     .with_field("tags")
     .sort_by("last_updated.public_id_updated_at", "desc")
