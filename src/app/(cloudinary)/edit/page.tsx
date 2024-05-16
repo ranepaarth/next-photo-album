@@ -107,6 +107,13 @@ const EditPage = ({ searchParams }: EditPageProps) => {
                   🖼️ Original Image
                 </span>
                 <CldImage
+                  config={{
+                    cloud: {
+                      apiSecret: process.env.CLOUDINARY_API_SECRET,
+                      apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+                      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+                    },
+                  }}
                   src={searchParams.publicId}
                   alt="image"
                   width={280}
@@ -122,6 +129,13 @@ const EditPage = ({ searchParams }: EditPageProps) => {
                   🎇 Transformed Image
                 </span>
                 <CldImage
+                  config={{
+                    cloud: {
+                      apiSecret: process.env.CLOUDINARY_API_SECRET,
+                      apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+                      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+                    },
+                  }}
                   src={searchParams.publicId}
                   alt="image"
                   width={280}
