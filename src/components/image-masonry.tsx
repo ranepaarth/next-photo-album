@@ -12,12 +12,12 @@ type ImageMasonryProps = {
 };
 
 const ImageMasonry = ({ resources, onUnHeart }: ImageMasonryProps) => {
-  const [totalResources, setTotalResources] = useState(resources.length);
+  const [totalResources, setTotalResources] = useState(resources?.length);
   const pathname = usePathname();
 
   useEffect(() => {
-    setTotalResources(resources.length);
-  }, [resources.length]);
+    setTotalResources(resources?.length);
+  }, [resources?.length]);
   return (
     <>
       {totalResources > 0 && (
@@ -34,7 +34,7 @@ const ImageMasonry = ({ resources, onUnHeart }: ImageMasonryProps) => {
         </div>
       )}
       <div className="mt-5 columns-2 lg:columns-3 xl:columns-4">
-        {resources.map((image, index) => (
+        {resources?.map((image, index) => (
           <CloudinaryImage
             image={image}
             key={image.public_id}

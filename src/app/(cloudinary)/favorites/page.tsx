@@ -1,27 +1,29 @@
+"use client";
+
+import { fetchFavoriteImages } from "@/actions/fetch-favorites";
 import FavoritesList from "@/app/(cloudinary)/favorites/fovirtes-list";
-import ForceRefresh from "@/components/force-refresh";
-import cloudinary from "cloudinary";
-import React from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { CloudinarySearchResults } from "../../../../types";
 
-const FavoritesPage = async () => {
-  const results: CloudinarySearchResults = await cloudinary.v2.search
-    .expression(
-      "resource_type:image AND folder:next-photo-album AND tags=favorite"
-    )
-    .with_field("tags")
-    .sort_by("last_updated.tags_updated_at", "desc")
-    .max_results(30)
-    .execute();
+const FavoritesPage = () => {
+  const [results, setResults] = useState<CloudinarySearchResults>();
+
+  const [isPending, startTransition] = useTransition();
+  useEffect(() => {
+    startTransition(async () => {
+      const response = await fetchFavoriteImages();
+      if (!response.resources) return;
+      setResults(response);
+    });
+  }, []);
 
   return (
     <section>
-      <ForceRefresh />
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold mb-8">Favorites</h1>
       </div>
 
-      <FavoritesList initialResources={results.resources} />
+      <FavoritesList initialResources={results?.resources} />
     </section>
   );
 };

@@ -7,7 +7,7 @@ import ImageMasonry from "../../../components/image-masonry";
 const FavoritesList = ({
   initialResources,
 }: {
-  initialResources: ImageType[];
+  initialResources: ImageType[] | undefined;
 }) => {
   const [resources, setResources] = useState(initialResources);
 
@@ -17,12 +17,15 @@ const FavoritesList = ({
 
   const onUnHeart = (image: ImageType) => {
     setResources((currentResource) =>
-      currentResource.filter(
+      currentResource?.filter(
         (resource) => resource.public_id !== image.public_id
       )
     );
   };
-  return <ImageMasonry resources={resources} onUnHeart={onUnHeart} />;
+
+  return (
+    <ImageMasonry resources={resources!} onUnHeart={onUnHeart} />
+  );
 };
 
 export default FavoritesList;
