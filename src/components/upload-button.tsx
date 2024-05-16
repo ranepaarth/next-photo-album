@@ -31,7 +31,7 @@ const UploadButton = ({ totalImages }: UploadButtonType) => {
       }}
       config={{
         cloud: {
-          apiSecret:process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+          apiSecret: process.env.CLOUDINARY_API_SECRET,
           apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
           cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
         },
