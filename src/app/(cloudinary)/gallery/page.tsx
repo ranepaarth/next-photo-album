@@ -1,6 +1,7 @@
 import ForceRefresh from "@/components/force-refresh";
 import ImageMasonry from "@/components/image-masonry";
 import UploadButton from "@/components/upload-button";
+import { cloudinaryConfig } from "@/lib/cloudinary-config";
 import cloudinary from "cloudinary";
 import Link from "next/link";
 import React from "react";
@@ -15,9 +16,10 @@ type GalleryProps = {
 
 const GalleryPage = async ({ searchParams }: GalleryProps) => {
   const tagsExpression = searchParams.tag ? `AND tags=${searchParams.tag}` : "";
+  await cloudinaryConfig();
   const results: CloudinarySearchResults = await cloudinary.v2.search
     .expression(
-      `cloud_name:${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME} AND resource_type:image AND folder:next-photo-album ${tagsExpression}`
+      `resource_type:image AND folder:next-photo-album ${tagsExpression}`
     )
     .with_field("tags")
     .sort_by("created_at", "desc")

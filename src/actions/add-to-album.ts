@@ -2,8 +2,10 @@
 
 import cloudinary from "cloudinary";
 import { ImageType } from "../../types";
+import { cloudinaryConfig } from "@/lib/cloudinary-config";
 
 export async function fetchAlbums() {
+  await cloudinaryConfig()
   return await cloudinary.v2.api.sub_folders("next-photo-album");
 }
 
@@ -21,6 +23,8 @@ export async function addToAlbumAction(folderName: string, image: ImageType) {
 
   const publicIdArray = image.public_id.split("/");
   const id = publicIdArray[publicIdArray.length - 1];
+
+  await cloudinaryConfig()
 
   if (folderName === "root" || folderName === "next-photo-album") {
     await cloudinary.v2.uploader.rename(

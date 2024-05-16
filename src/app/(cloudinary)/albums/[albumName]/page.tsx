@@ -1,5 +1,6 @@
 import ForceRefresh from "@/components/force-refresh";
 import ImageMasonry from "@/components/image-masonry";
+import { cloudinaryConfig } from "@/lib/cloudinary-config";
 import cloudinary from "cloudinary";
 import { ImagePlus } from "lucide-react";
 import React from "react";
@@ -12,9 +13,11 @@ type SingleAlbumPageProps = {
 };
 
 const SingleAlbumPage = async ({ params }: SingleAlbumPageProps) => {
+  await cloudinaryConfig();
+
   const results: CloudinarySearchResults = await cloudinary.v2.search
     .expression(
-      `cloud_name:${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME} AND resource_type:image AND folder:next-photo-album/${params.albumName}`
+      `resource_type:image AND folder:next-photo-album/${params.albumName}`
     )
     .with_field("tags")
     .sort_by("last_updated.public_id_updated_at", "desc")
