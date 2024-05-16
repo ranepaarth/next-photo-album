@@ -21,8 +21,11 @@ const ImageMasonrySkeleton = () => {
   return (
     <div className="mt-5 columns-2 lg:columns-3 xl:columns-4 gap-4">
       {Array.from({ length: 10 }).map((_, index) => (
-        <div className="mt-5 first:mt-0 flex-nowrap overflow-hidden">
-          <ImageSkeleton key={index} />
+        <div
+          className="mt-5 first:mt-0 flex-nowrap overflow-hidden"
+          key={index}
+        >
+          <ImageSkeleton />
         </div>
       ))}
     </div>
