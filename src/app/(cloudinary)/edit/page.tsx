@@ -1,7 +1,6 @@
 "use client";
 
 import { getAssetImage } from "@/actions/get-asset-image";
-import ForceRefresh from "@/components/force-refresh";
 import { Button } from "@/components/ui/button";
 import { Eraser, Info, Loader2, Scissors } from "lucide-react";
 import { CldImage } from "next-cloudinary";
@@ -38,12 +37,11 @@ const EditPage = ({ searchParams }: EditPageProps) => {
 
   return (
     <section>
-      <ForceRefresh />
       <div className="flex justify-between items-center mb-2">
         <h1 className="text-4xl font-bold">Edit Image</h1>
       </div>
 
-      <div className="flex items-center px-4 py-2 rounded-md border bg-neutral-900 w-fit mb-8 text-muted-foreground text-xs">
+      <div className="flex items-center px-4 py-2 rounded-md border dark:bg-neutral-900 bg-neutral-200 w-fit mb-8 text-muted-foreground text-xs">
         <Info className="mr-2 w-4 h-4" />
         The behavior of below transformations depends on the image you choose
       </div>
@@ -69,7 +67,7 @@ const EditPage = ({ searchParams }: EditPageProps) => {
         <Button
           variant={"secondary"}
           onClick={() => setTransformation("gray-scale")}
-          className="hover:grayscale bg-blue-500"
+          className="hover:grayscale hover:bg-neutral-500 bg-blue-500"
         >
           <span>Image grayscale</span>
         </Button>

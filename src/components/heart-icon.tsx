@@ -44,7 +44,7 @@ const ImageHeartIcon = ({
         });
       }}
     >
-      <HeartIcon className="w-5 h-5 group-hover:ease-in-out opacity-0 group-hover:transition-opacity group-hover:duration-300 group-hover:opacity-100" />
+      <HeartIcon className="w-5 h-5 group-hover:ease-in-out opacity-0 group-hover:transition-opacity group-hover:duration-300 group-hover:opacity-100 text-white" />
     </button>
   );
 };

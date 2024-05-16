@@ -35,10 +35,9 @@ export function ImageDropdownMenu({ image }: { image: ImageType }) {
 
   return (
     <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
-      <ForceRefresh />
       <DropdownMenuTrigger asChild>
         <Button variant="imageMenuBtn" className="p-0 focus-visible:ring-0">
-          <Ellipsis className="w-5 h-5" />
+          <Ellipsis className="w-5 h-5 text-white" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40">
@@ -62,10 +61,8 @@ export function ImageDropdownMenu({ image }: { image: ImageType }) {
               <span>Edit</span>
             </Link>
           </DropdownMenuItem>
-          {pathname !== '/gallery' && 
-            <DropdownMenuItem
-              className="py-2 hover:bg-secondary w-full rounded-sm"
-            >
+          {pathname !== "/gallery" && (
+            <DropdownMenuItem className="py-2 hover:bg-secondary w-full rounded-sm">
               <Button
                 variant={"imageMenuBtn"}
                 className="h-0 w-full flex justify-start px-2"
@@ -75,7 +72,7 @@ export function ImageDropdownMenu({ image }: { image: ImageType }) {
                 Remove
               </Button>
             </DropdownMenuItem>
-          }
+          )}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
