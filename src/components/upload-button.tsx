@@ -29,6 +29,13 @@ const UploadButton = ({ totalImages }: UploadButtonType) => {
           router.refresh();
         }, 1000);
       }}
+      config={{
+        cloud: {
+          apiSecret:process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+          apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+          cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        },
+      }}
     >
       {({ open }) => {
         return (

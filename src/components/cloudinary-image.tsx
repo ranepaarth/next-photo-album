@@ -46,6 +46,13 @@ const CloudinaryImage = ({ image, onUnHeart, index }: CloudinaryImageProps) => {
         width={image.width}
         height={image.height}
         quality={20}
+        config={{
+          cloud: {
+            apiSecret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+            apiKey: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+            cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+          },
+        }}
         className="w-full rounded-md brightness-90 overflow-hidden"
       />
     </motion.article>
