@@ -2,7 +2,9 @@
 
 Implemented a photo gallery with NextJs and Cloudinary.
 
-![Next Photo Album](https://github.com/ranepaarth/next-photo-album/assets/130083485/5ebe5102-2b9d-41ff-b0b9-f04dfe4a320f)
+
+https://github.com/ranepaarth/next-photo-album/assets/130083485/fdbea727-3d17-4f29-9e54-df2eb5f095b6
+
 
 ## Features
 
