@@ -36,11 +36,10 @@ Add a `.env` file in the root directory and follow
 
 ```
 
-# The Cloudinary developer dashboard provides you the following variable values
-
+# Create or login to your cloudniary account and then navigate to the developer dashboard, there you can get the following values
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 CLOUDINARY_URL
-NEXT_PUBLIC_CLOUDINARY_API_KEY=117298869762373
+NEXT_PUBLIC_CLOUDINARY_API_KEY
 CLOUDINARY_API_SECRET
 
 # You can create your own custom upload preset from cloudinary settings after you have logged in
