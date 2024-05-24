@@ -19,7 +19,6 @@ https://github.com/ranepaarth/next-photo-album/assets/130083485/fdbea727-3d17-4f
 
 - [Next.js / TailwindCSS](https://nextjs.org/docs/getting-started/installation)
 - [Next-Cloudinary](https://next.cloudinary.dev/)
-- [Prisma ORM](https://www.prisma.io/docs/orm/overview/introduction/what-is-prisma)
 - [Cloudinary](https://cloudinary.com/)
 - [Shadcn/ui](https://ui.shadcn.com/docs/installation/next)
 - [Framer motion](https://www.framer.com/motion/)
