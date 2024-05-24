@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Photo Album
 
-## Getting Started
+Implemented a photo gallery with NextJs and Cloudinary.
 
-First, run the development server:
+![Next Photo Album](https://github.com/ranepaarth/next-photo-album/assets/130083485/5ebe5102-2b9d-41ff-b0b9-f04dfe4a320f)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- Upload Images
+- Search Images by tag name
+- Add Image to album
+- Add to favorites
+- Transform Images
+- Dark Theme Toggle
+
+## Tech Stack
+
+- [Next.js / TailwindCSS](https://nextjs.org/docs/getting-started/installation)
+- [Next-Cloudinary](https://next.cloudinary.dev/)
+- [Prisma ORM](https://www.prisma.io/docs/orm/overview/introduction/what-is-prisma)
+- [Cloudinary](https://cloudinary.com/)
+- [Shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+- [Framer motion](https://www.framer.com/motion/)
+
+## Installation
+
+1. Clone the repository: `git clone https://github.com/ranepaarth/next-photo-album.git`
+2. Navigate to the project directory: `cd next-photo-album`
+3. Install the dependencies: `npm install`
+
+#### Environment Variables
+
+Add a `.env` file in the root directory and follow
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# The Cloudinary developer dashboard provides you the following variable values
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+CLOUDINARY_URL
+NEXT_PUBLIC_CLOUDINARY_API_KEY=117298869762373
+CLOUDINARY_API_SECRET
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# You can create your own custom upload preset from cloudinary settings after you have logged in
+NEXT_PUBLIC_UPLOAD_PRESET
 
-## Learn More
+# This is done so as to not exceed cloudinary storage
+NEXT_PUBLIC_MAX_IMAGES
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Start development server `npm run dev`
+2. Open your Browser and visit [http://localhost:3000](http://localhost:300) to view the website
 
-## Deploy on Vercel
+## Concepts covered
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [x] NextJs 14 App routing
+- [x] Server Actions
+- [x] Optimistic Updates
+- [x] Cloudinary's Upload & Search APIs
+- [x] Framer motion animation & transitions
