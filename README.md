@@ -1,6 +1,6 @@
 # Next Photo Album
 
-Implemented a photo gallery with NextJs and Cloudinary.
+🖼️ Implemented a photo gallery with NextJs and Cloudinary.
 
 
 https://github.com/ranepaarth/next-photo-album/assets/130083485/fdbea727-3d17-4f29-9e54-df2eb5f095b6
